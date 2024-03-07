@@ -11,7 +11,7 @@ const TopicTwo = () => {
                             Similar Topics
                         </Typography>
                         <Typography variant="body1" >
-                                    Been the industry's standard <br />
+                                    Been the industry standard <br />
                                     dummy text ever since the 1500s,
                         </Typography>
                         <Typography variant="body1" sx={{ marginBottom: '5px' }}>
