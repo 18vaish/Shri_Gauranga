@@ -12,14 +12,15 @@ import Image from 'next/image';
 
 function Footer() {
 
-    const imageWidth = window.innerWidth;
+    // const imageWidth = window.innerWidth;
     const matches = useMediaQuery("(min-width:600px)");
 
     return (
         <Box bgcolor="#fcdfa0" mt={1}>
             {/* Image */}
             <Box mb={4} display={"flex"}  >
-                <Image src="/banner-3 1.png" width={imageWidth} height={75} alt="Banner Image" />
+                <Image src="/banner-3 1.png" width={!matches ? 375 : 1550}
+                    height={75} alt="Banner Image" />
             </Box>
             <Box display="flex" justifyContent="space-between" alignItems="flex-start" flexWrap="wrap" p={2}>
                 {/* Links Left */}
