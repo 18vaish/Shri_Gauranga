@@ -26,7 +26,7 @@ const Navbar = () => {
         router.push('/Subscription');
     };
     const handleclickhome = () => {
-        router.push('/home');
+        router.push('/');
     };
     const handleclickarticlehomepage = () => {
         router.push('/ArticleHomePage');
