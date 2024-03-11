@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { AppBar, Toolbar, IconButton, Box, Typography, Button, Menu, MenuItem, MenuList, Avatar, useMediaQuery } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Box, Typography, Button, Menu, MenuItem, MenuList, Avatar, useMediaQuery, Divider } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -16,7 +16,6 @@ const Navbar = () => {
     const [isBackgroundVisible, setIsBackgroundVisible] = useState(false);
     const [isAdditionalNavbarOpen, setIsAdditionalNavbarOpen] = useState(false); // New state for the additional navbar
     const router = useRouter();
-
 
     const handleclickdonation = () => {
         router.push('/Donation');
@@ -39,13 +38,10 @@ const Navbar = () => {
         router.push('/BookletHomePage');
     };
 
-    const handleEnglishMenuClose = () => {
-        setAnchorEl(null);
-    };
-
     const [anchorNav, setAnchorNav] = useState<null | HTMLElement>(null);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [language, setLanguage] = useState('English');
 
     const openMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorNav(event.currentTarget);
@@ -63,6 +59,16 @@ const Navbar = () => {
         setIsMobileSidebarOpen(!isMobileSidebarOpen);
         setIsBackgroundVisible(!isBackgroundVisible);
         setIsAdditionalNavbarOpen(!isAdditionalNavbarOpen); // Toggle the state of the additional navbar
+    };
+
+    const handleLanguageChange = (selectedLanguage: string) => {
+        setLanguage(selectedLanguage);
+        handleEnglishMenuClose();
+        
+    };
+
+    const handleEnglishMenuClose = () => {
+        setAnchorEl(null);
     };
 
     useEffect(() => {
@@ -89,7 +95,7 @@ const Navbar = () => {
                                 <Typography variant="subtitle2" color="lightgray" fontSize="small" sx={{ display: 'flex', marginLeft: '5px' }}>
                                     <LoginDropdown />
                                     <Button variant="text" color="inherit" onClick={handleEnglishMenuClose} sx={{ textTransform: 'capitalize', paddingLeft: '80px', paddingTop: '10px' }}>
-                                        English
+                                        {language}
                                         <ExpandMoreIcon />
                                     </Button>
                                 </Typography>
@@ -120,8 +126,8 @@ const Navbar = () => {
                             <VolunteerActivism sx={{ paddingBottom: '5px' }} />
                             Donate
                         </Button>
-                        <Button variant="text" color="inherit" sx={{ textTransform: 'capitalize' }}>
-                            English
+                        <Button variant="text" color="inherit" onClick={(event) => setAnchorEl(event.currentTarget)} sx={{ textTransform: 'capitalize' }}>
+                            {language}
                             <ExpandMoreIcon />
                         </Button>
                         {matches && <LoginDropdown />}
@@ -134,8 +140,10 @@ const Navbar = () => {
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
                     >
-                        <MenuItem onClick={handleEnglishMenuClose}>Hindi</MenuItem>
-                        <MenuItem onClick={handleEnglishMenuClose}>Marathi</MenuItem>
+                        <MenuItem  sx={{color:"black"}} >French</MenuItem>
+                <Divider sx={{ border: '0.5px solid black',}} />
+                <MenuItem  sx={{color:"black"}}>Russian</MenuItem>
+                
                     </Menu>
                     <Menu
                         anchorEl={anchorNav}
