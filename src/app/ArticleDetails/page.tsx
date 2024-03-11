@@ -28,12 +28,12 @@ function ArticlesPage() {
     ];
 
     const matches = useMediaQuery("(min-width:600px)");
-    const maxscreen = useMediaQuery("(min-width:800px)");
+    // const maxscreen = useMediaQuery("(min-width:800px)");
 
     return (
         <div>
-            <Box sx={{ backgroundColor: "#FEFCEA" }}>
-                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: 'center', p: 2 }}>
+            <Box bgcolor={"#FEFCEA"}>
+                <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"} p={2}>
                     <Typography variant='h6' fontSize={'small'}>
                         <b> Home / Articles /</b> RadhaKrishna are two bodies and One Soul!
                     </Typography>
@@ -56,21 +56,23 @@ function ArticlesPage() {
                     />
                 </Box>
                 <Container sx={{ minHeight: '100vh' }}>
-                    <Grid container justifyContent="flex-end" alignItems="center" spacing={2}>
+                    <Grid container justifyContent={"flex-end"} alignItems={"center"} spacing={2}>
                         {/* <Grid item xs={12} md={6} lg={6}>
                     </Grid> */}
                         <Grid item xs={12}>
-                            <Box sx={{ backgroundColor: '#F5F5F5', p: 2, textAlign: 'center', paddingX: '50px' }}>
-                                <Typography variant="h4">RadhaKrishna are two bodies and<br /> One Soul!</Typography>
-                                <Box sx={{ display: 'flex', justifyContent: "space-between", alignItems: "center", mt: 2 }}>
-                                    <Typography sx={{ fontSize: 'small' }}>Related Tags: Love, Bhakti Sastra, Parivāra Āṅgana</Typography>
-                                    <Box sx={{ color: '#555555', display:"flex", alignItems:"center" }}>
-                                        <DownloadIcon />
-                                        <ShareIcon />
+                            <Box sx={{ backgroundColor: '#F5F5F5', p: 2, textAlign: 'center', paddingX: '50px', borderRadius: 5,}}>
+                                <Typography variant="h4" mt={2} mb={2}>RadhaKrishna are two bodies and<br /> One Soul!</Typography>
+                                <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
+                                    <Box display={"flex"} justifyContent={"space-between"} mt={2}gap={!matches ? 0 : 80}>
+                                        <Typography sx={{ fontSize: 'small' }}>Related Tags: Love, Bhakti Sastra, Parivāra Āṅgana</Typography>
+                                        <Box sx={{ color: '#555555', display: "flex", alignItems: "center" }}>
+                                            <DownloadIcon />
+                                            <ShareIcon />
+                                        </Box>
                                     </Box>
+                                    <Image src="/radha krishna.jpg" priority alt="RadhaKrishna" width={!matches ? 250 : 1000} height={!matches ? 200 : 300} style={{ borderRadius: '10px' }} />
                                 </Box>
-                                <Image src="/radha krishna.jpg" priority alt="RadhaKrishna" width={!matches ? 250 : 1000} height={!matches ? 200 : 300} style={{ marginTop: '20px', borderRadius: '10px' }} />
-                                <Box sx={{ paddingLeft: '5%', paddingRight: '5%' }}>
+                                <Box sx={{ paddingLeft: '5%', paddingRight: '5%', marginBottom:5 }}>
                                     <Typography variant="body1" sx={{ marginTop: '20px', textAlign: 'start' }}>
                                         1. nyonyacittavidusau nu parasparatmanityasthiteriti <br />
                                         nrsu prathitau yadavam <br />

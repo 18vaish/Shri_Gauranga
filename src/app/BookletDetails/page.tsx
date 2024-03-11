@@ -93,29 +93,6 @@ const BookletDetailsPage = () => {
                                 <b>Number of Pages :</b> 644<br />
                                 <b>Language :</b> Hindi<br />
                             </Typography>
-                            {/* <Box
-                                sx={{
-                                    '& > legend': { mt: 2 },
-                                }}>
-                                <Typography component="legend" sx={{
-                                    varient: "h6",
-                                    fontWeight: "bold",
-                                }}>
-                                    Rate the book
-                                </Typography>
-                                <Box sx={{ display: "flex", alignItems: "center" }}>
-                                    <Rating
-                                        name="simple-controlled"
-                                        sx={{ gap: 2 }}
-                                        value={value}
-                                        onChange={(event, newValue) => {
-                                            setValue(newValue);
-                                        }} />
-                                    <Button variant="outlined" sx={{
-                                        border: "1px solid black", color: "white", fontSize: "10px", fontWeight: "bold", backgroundColor: "#81311A", borderRadius: 2, height: "20px", padding: 1, width: "10px"
-                                    }}>Submit</Button>
-                                </Box>
-                            </Box> */}
                             <Button variant="outlined" sx={{ border: "1px solid black", color: "white", backgroundColor: "#81311A", mt: 1, borderRadius: 3, width: "100px", fontWeight:"bold"}}>Buy</Button>
                         </Grid>
                         <Grid container justifyContent={!matches ? "flex-start" : "center"} alignItems={"flex-start"}>
@@ -131,12 +108,12 @@ const BookletDetailsPage = () => {
                                     </Typography>
                                 </Box>
                                 <Box>
-                                    <Box sx={{ display: "flex", justifyContent: "center", gap: 5, flexWrap: "wrap" }}>
+                                    <Box sx={{ display: "flex", justifyContent: "center", gap: 10, flexWrap: "wrap" }}>
                                         <BookletCard />
                                         <BookletCard />
                                         <BookletCard />
                                     </Box>
-                                    <Box sx={{ display: "flex", justifyContent: "center", gap: 5, flexWrap: "wrap", mt: 5 }}>
+                                    <Box sx={{ display: "flex", justifyContent: "center", gap: 10, flexWrap: "wrap", mt: 5 }}>
                                         <BookletCard />
                                         <BookletCard />
                                         <BookletCard />

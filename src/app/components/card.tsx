@@ -1,5 +1,5 @@
 "use client"
-import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import { Box, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import React from 'react';
 import ShareIcon from '@mui/icons-material/Share';
 import { useRouter } from 'next/navigation';
@@ -30,20 +30,20 @@ function CardData() {
                                 image={booklet.image}
                                 alt={booklet.name}
                             />
-                            <CardContent>
+                            <CardContent sx={{ padding: 1 }}>
                                 <Typography variant="h6" sx={{ fontWeight: "bold" }}>{booklet.name}</Typography>
                                 <Typography variant="body2" color="text.secondary">
                                     {booklet.information}
                                 </Typography>
-                                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1 }}>
+                            </CardContent>
+                            <CardActionArea >
+                            <Box  sx={{ display:"flex",alignItems:"center",justifyContent:"space-between",p:1}}>
                                     <Typography variant="h6" sx={{ fontSize: "9px", color: "gray" }}>
                                         1 Jan 2023
                                     </Typography>
-                                    <div style={{ color: "#81311A"}}>
-                                        <ShareIcon />
-                                    </div>
+                                        <ShareIcon sx={{ color: "#81311A" }} />
                                 </Box>
-                            </CardContent>
+                            </CardActionArea>
                         </Card>
                     ))}
                 </Box>

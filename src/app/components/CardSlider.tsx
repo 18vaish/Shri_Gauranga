@@ -1,5 +1,5 @@
 "use client"
-import { Grid, Box, Typography, IconButton, Card, CardMedia, CardContent, useMediaQuery } from '@mui/material'
+import { Grid, Box, Typography, IconButton, Card, CardMedia, CardContent, useMediaQuery, CardActionArea } from '@mui/material'
 import React, { useEffect } from 'react'
 import Carousel from 'react-material-ui-carousel';
 import ShareIcon from '@mui/icons-material/Share';
@@ -52,7 +52,7 @@ const CardSlider = () => {
                         {[...Array(Math.ceil(booklets.length / cardsPerSlide))].map((_, index) => (
                             <Box key={index} sx={{ display: 'flex', justifyContent: 'center', paddingTop: '20px', gap: 5, mb: 5 }}>
                                 {booklets.slice(index * cardsPerSlide, (index + 1) * cardsPerSlide).map((booklet, i) => (
-                                    <Card key={i} sx={{ width: isMobile ? '90%' : '250px', mb: 2, backgroundColor: '#FCDFA0', borderRadius: 3, height: 260 }}>
+                                    <Card key={i} onClick={handleclickarticledetails} sx={{ width: '250px', mb: 2, backgroundColor: '#FCDFA0', borderRadius: 3 }}>
                                         <CardMedia
                                             component="img"
                                             loading="lazy"
@@ -61,22 +61,20 @@ const CardSlider = () => {
                                             image={booklet.image}
                                             alt={booklet.name}
                                         />
-                                        <CardContent
-                                            onClick={handleclickarticledetails}
-                                        >
+                                        <CardContent sx={{ padding: 1 }}>
                                             <Typography variant="h6" sx={{ fontWeight: "bold" }}>{booklet.name}</Typography>
                                             <Typography variant="body2" color="text.secondary">
                                                 {booklet.information}
                                             </Typography>
-                                            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mt: 1 }}>
+                                        </CardContent>
+                                        <CardActionArea >
+                                            <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", p: 1 }}>
                                                 <Typography variant="h6" sx={{ fontSize: "9px", color: "gray" }}>
                                                     1 Jan 2023
                                                 </Typography>
-                                                <Box sx={{ color: "#81311A" }}>
-                                                    <ShareIcon />
-                                                </Box>
+                                                <ShareIcon sx={{ color: "#81311A" }} />
                                             </Box>
-                                        </CardContent>
+                                        </CardActionArea>
                                     </Card>
                                 ))}
                             </Box>

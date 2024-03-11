@@ -4,30 +4,32 @@ import React from 'react'
 const TopicOne = () => {
     return (
         <div>
-            <Grid container>
-                <Grid item xs={12} md={8} sm={4} >
-                    <Stack direction="column" sx={{}}>
-                        <Typography variant="h6" sx={{ marginBottom: '10px', fontWeight: 'bold', fontFamily: 'Times New Roman', marginLeft: '20px' }}>
+            <Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="column" spacing={-0.5} sx={{ pl: 1 }}>
+                        <Typography variant="subtitle1" sx={{ fontWeight: 'bold', fontFamily: "cursive" }}>
                             Authors
                         </Typography>
                         <Typography variant="body1" >
-                            Srila Bhaktisiddhanta
+                            o Srila Bhaktisiddhanta
                         </Typography>
-                        <Typography variant="body1" sx={{ marginBottom: '5px' }}>
-                            A.C. Bhaktivedanta
+                        <Typography variant="body1"  >
+                            o A.C. Bhaktivedanta Swami
                         </Typography>
-                        <Typography variant="body1" sx={{ marginBottom: '5px' }}>
-                            S Srila B.R. Sridhara Deva
+                        <Typography variant="body1"  >
+                            o  Srila B.R. Sridhara Deva
                         </Typography>
-                        <Typography variant="body1" sx={{ marginBottom: '5px' }}>
-                            Srila B.G. Narasingha
+                        <Typography variant="body1" >
+                            o Srila B.P. Puri Mahārāja
                         </Typography>
-                        <Typography variant="body1" sx={{ marginBottom: '5px' }}>
-                            Srila Bhakti Kiśora A
-                            Dhiralalita Dasi
+                        <Typography variant="body1"  >
+                            o Srila B.G. Narasingha
                         </Typography>
-                        <Typography variant="body1" sx={{ marginBottom: '5px' }}>
-                            Dhiralalita Dasi
+                        <Typography variant="body1" >
+                            o Srila Bhakti Kiśora Aranya
+                        </Typography>
+                        <Typography variant="body1" >
+                            o Dhiralalita Dasi
                         </Typography>
                     </Stack>
                 </Grid>
