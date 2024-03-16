@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
-import { TextField, Container, Grid, Typography, InputAdornment, Box, IconButton, useMediaQuery } from '@mui/material';
-import { Search } from '@mui/icons-material';
+import { TextField, Container, Grid, Typography, InputAdornment, Box, IconButton, useMediaQuery, Link, Modal } from '@mui/material';
+import { FileDownload, Search, UploadFile } from '@mui/icons-material';
 import { Card, CardContent, CardMedia } from '@mui/material';
 
 import ShareIcon from '@mui/icons-material/Share';
@@ -9,26 +9,37 @@ import CardSlider from '../components/CardSlider';
 import SubscribeModelBox from '../components/SubscribeModelBox';
 import DownloadIcon from '@mui/icons-material/Download';
 import Image from 'next/image';
+import TextEditor from '../components/texteditor';
+import router, { useRouter } from 'next/navigation';
+
 
 function ArticlesPage() {
-    const [searchQuery, setSearchQuery] = useState('');
+    const router = useRouter(); // Properly import and use useRouter
 
-    const handleSearchChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+
+    const matches = useMediaQuery("(min-width:600px)");
+ 
+        const [searchQuery, setSearchQuery] = useState('');
+   const [isEditorOpen, setEditorOpen] = useState(false);
+   const [editorContent, setEditorContent] = useState(""); 
+
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(event.target.value);
     };
 
-    // Define the booklets data
-    const booklets = [
-        { name: 'Booklet 1', image: '/krishna.jpg', information: 'Some information about Booklet 1' },
-        { name: 'Booklet 2', image: '/krishna.jpg', information: 'Some information about Booklet 2' },
-        { name: 'Booklet 3', image: '/krishna.jpg', information: 'Some information about Booklet 3' },
-        { name: 'Booklet 4', image: '/krishna.jpg', information: 'Some information about Booklet 4' },
-        { name: 'Booklet 5', image: '/krishna.jpg', information: 'Some information about Booklet 5' },
-        { name: 'Booklet 6', image: '/krishna.jpg', information: 'Some information about Booklet 6' },
-    ];
+    const openEditor = () => {
+        setEditorOpen(true);
+    };
 
-    const matches = useMediaQuery("(min-width:600px)");
-    // const maxscreen = useMediaQuery("(min-width:800px)");
+    const closeEditor = () => {
+        setEditorOpen(false);
+    };
+
+    const saveContentAndNavigate = () => {
+      
+        closeEditor(); 
+    };
+    
 
     return (
         <div>
@@ -60,13 +71,17 @@ function ArticlesPage() {
                         {/* <Grid item xs={12} md={6} lg={6}>
                     </Grid> */}
                         <Grid item xs={12}>
-                            <Box sx={{ backgroundColor: '#F5F5F5', p: 2, textAlign: 'center', paddingX: '50px', borderRadius: 5,}}>
+                            <Box sx={{ backgroundColor: '#F5F5F5', p: 2, textAlign: 'center', borderRadius: 5}}>
                                 <Typography variant="h4" mt={2} mb={2}>RadhaKrishna are two bodies and<br /> One Soul!</Typography>
                                 <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
-                                    <Box display={"flex"} justifyContent={"space-between"} mt={2}gap={!matches ? 0 : 80}>
+                                    <Box display={"flex"} justifyContent={"space-between"} mt={2}gap={!matches ? 0 : 77}>
                                         <Typography sx={{ fontSize: 'small' }}>Related Tags: Love, Bhakti Sastra, Parivāra Āṅgana</Typography>
                                         <Box sx={{ color: '#555555', display: "flex", alignItems: "center" }}>
-                                            <DownloadIcon />
+                                         
+                                           
+                                        <Link href="#" onClick={openEditor}><UploadFile/></Link>
+
+                                            <FileDownload />
                                             <ShareIcon />
                                         </Box>
                                     </Box>
@@ -114,8 +129,23 @@ function ArticlesPage() {
                     </Grid>
                 </Container>
             </Box>
+            <Modal open={isEditorOpen} onClose={closeEditor}>
+    <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: '#fff', padding: 12,        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+}}>
+        <TextEditor value={editorContent} onChange={(value: string) => setEditorContent(value)} />
+        {/* Save and Close button */}
+       
+    </Box>
+</Modal>
+
         </div>
     );
 }
 
 export default ArticlesPage;
+function setEditorOpen(arg0: boolean) {
+    throw new Error('Function not implemented.');
+}
+
