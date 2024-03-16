@@ -13,7 +13,7 @@ function CreateAccount() {
     return (
         <Box sx={{ display: "flex", width: "100%", height: "100vh", backgroundColor: "#FEFCEA" }}>
             <Box sx={{ display: "flex", width: "100%", height: "5vh", backgroundColor: "#81311A", justifyContent: "center" }}>
-                <Box sx={{ display: "flex", width: "500px", height: "500px", alignItems: "center", mt: "20%", justifyContent: "center" }}>
+                <Box sx={{ display: "flex", width: "500px", height: "500px", alignItems: "center", mt: "10%", justifyContent: "center" }}>
                     <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                         <Box>
                             <h2><b>Welcome to Gauranga <br />
@@ -34,7 +34,7 @@ function CreateAccount() {
                         <Box>
                             <FormControlLabel control={<Checkbox />} sx={{ color: "#686760" }} label="Remember me for 30 days" />
                         </Box>
-                        <Box sx={{ mt: 2 }}>
+                        <Box sx={{ mt: 2, mb:3}}>
                             <a href="#">
                                 <u>
                                     Forgot Password?

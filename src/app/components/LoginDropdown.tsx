@@ -6,6 +6,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import UpgradeToNXTpage from '../UpgradeToNextLevel/page';
 import SignOutMsg from './SignOutMsgPop';
+import { Divider } from '@mui/material';
 
 export default function LoginDropdown() {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -57,12 +58,22 @@ export default function LoginDropdown() {
                 MenuListProps={{
                     'aria-labelledby': 'basic-button',
                 }}
-            >
-                <MenuItem onClick={handleProfileClick}>My Profile</MenuItem>
-                <MenuItem onClick={handleclickupgrade}>Subscribe to Upgrade</MenuItem>
-                <MenuItem >Signout</MenuItem>
+                PaperProps={{ 
+                    style: { 
+                        width:"120px",
+                        // fontWeight:"bold",
+                        backgroundColor: '#CFCFCF', 
+                        border: '1px solid black', 
+                    } 
+                }}
+                     >
+                <MenuItem onClick={handleProfileClick} sx={{color:"black"}} >&nbsp;&nbsp;My Profile</MenuItem>
+                <Divider sx={{ border: '0.5px solid black',}} />
+                <MenuItem onClick={handleclickupgrade} sx={{color:"black"}}>Subscribe to <br/>&nbsp;&nbsp;&nbsp; Upgrade</MenuItem>
+                <Divider sx={{ border: '0.5px solid black',}} />
+                <MenuItem  sx={{color:"black"}} >&nbsp;&nbsp;&nbsp;Sign Out</MenuItem>
             </Menu>
-            {popupSubUpgrade && <UpgradeToNXTpage/>} {/* Changed from setOpen to popupSubUpgrade */}
+            {popupSubUpgrade && <UpgradeToNXTpage/>} 
             {popupSignOut && <SignOutMsg/>}
         </div>
     );

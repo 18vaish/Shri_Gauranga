@@ -1,37 +1,43 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
 import Paper from '@mui/material/Paper';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import { Button, useMediaQuery } from '@mui/material';
+// import SkipNextIcon from '@mui/icons-material/SkipNext';
+// import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 
 const images = [
     {
         label: '',
-        imgPath:
-            '/krishna.jpg',
+        imgPath: '/krishna.jpg',
     },
     {
         label: '',
-        imgPath:
-            '/radha krishna.jpg',
+        imgPath: '/radha krishna.jpg',
     },
     {
         label: '',
-        imgPath:
-            '/shree radha logo.jpg',
+        imgPath: '/shree radha logo.jpg',
     },
     {
         label: '',
-        imgPath:
-            '/radha krishna.jpg',
+        imgPath: '/radha krishna.jpg',
+    },
+    {
+        label: '',
+        imgPath: '/radha krishna.jpg',
+    },
+    {
+        label: '',
+        imgPath: '/radha krishna.jpg',
     },
 ];
 
 function ImageSlider() {
-    const theme = useTheme();
+
+    const matches = useMediaQuery("(min-width:600px)");
+
     const [activeStep, setActiveStep] = useState(0);
     const maxSteps = images.length;
 
@@ -62,13 +68,11 @@ function ImageSlider() {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            height: 100,
+                            height: 50,
                             pl: 2,
                             bgcolor: '#FEFCEA',
                         }}
-                    >
-                        {/* <Typography>{images[activeStep].label}</Typography> */}
-                    </Paper>
+                    />
                     <Box
                         component="img"
                         loading="lazy"
@@ -80,25 +84,41 @@ function ImageSlider() {
                             width: '100%',
                             borderRadius: 5,
                         }}
-                        src={images[activeStep]?.imgPath} // Add optional chaining to handle cases where images[activeStep] is undefined
-                        alt={images[activeStep]?.label} // Add optional chaining to handle cases where images[activeStep] is undefined
+                        src={images[activeStep]?.imgPath}
+                        alt={images[activeStep]?.label}
                     />
                     <MobileStepper
-                        steps={maxSteps}
+                        variant="dots"
+                        steps={6}
                         position="static"
                         activeStep={activeStep}
-                        sx={{ display: "flex", justifyContent: "center", backgroundColor: "#FEFCEA" }}
+                        sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            backgroundColor: "#FEFCEA",
+                            '& .MuiMobileStepper-dots': {
+                                marginTop: '25px',
+                                gap: 8
+
+                            },
+                            '& .MuiMobileStepper-dot': {
+                                width: '30px',
+                                height: '30px',
+                                border: "1px solid Black"
+                            },
+                            '& .MuiMobileStepper-dotActive': {
+                                backgroundColor: '#562000',
+                            },
+                        }}
                         backButton={
                             <Box>
                                 <button onClick={handleBack} disabled={activeStep === 0}>
-                                    <SkipPreviousIcon/>
                                 </button>
                             </Box>
                         }
                         nextButton={
                             <Box>
                                 <button onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-                                <SkipNextIcon/>
                                 </button>
                             </Box>
                         }

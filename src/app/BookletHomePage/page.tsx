@@ -1,89 +1,56 @@
 "use client"
-import { Box, Button, Typography } from '@mui/material'
-import React, { useEffect } from 'react'
-import ImageSlider from '../components/ImageSlider'
-import FilterBar from '../components/FilterBar'
-import { useRouter } from 'next/navigation'
-import TopicTwo from '../components/TopicTwo'
-import BookletCard from '../components/BookletCard'
+import React from 'react';
+import { Box, Button, Typography, useMediaQuery } from '@mui/material';
+import { useRouter } from 'next/navigation';
+import BookCard from '../components/BookCard';
+import FilterBar from '../components/FilterBar';
+import ImageSlider from '../components/ImageSlider';
+import RESVisitedArticle from '../components/TopicTwo';
+import TopicTwo from '../components/TopicTwo';
 
-const BookletHomePage = () => {
-
+const BookHomePage = () => {
     const router = useRouter();
+    const matches = useMediaQuery('(min-width:600px)');
 
-    const handleclickbookletcardspage = () => {
-        router.push('/BookletCardsPage')
-    }
+    const handleClickBookCardsPage = () => {
+        router.push('/BookCardsPage');
+    };
 
-    useEffect(() => {
-        // Perform side effects or data fetching here when props change
-        // Example:
-        // fetchData();
-    }, [/* add necessary dependencies here */]);
-    
     return (
-        <div>
-            <Box sx={{ backgroundColor: "#FEFCEA" }}>
-                <Box>
-                    <Typography variant='h6' p={2} sx={{ fontSize: "small" }}>
-                        <b>Home /</b> Booklets
-                    </Typography>
+        <Box sx={{ backgroundColor: "#FEFCEA" }}>
+            <Typography variant='h6' p={2} fontSize="small">
+                <b> Home /</b> Articles
+            </Typography>
+          
+            <FilterBar />
+            <Box display="flex" justifyContent="center" gap={5} flexWrap="wrap" >
+                <Box display="flex" flexDirection="column">
+                    <Section title="Featured" />
+                    <Section title="Popular" />
+                    <Section title="Recent" />
                 </Box>
-                <Box>
-                    <ImageSlider />
-                    <Box>
-                        <Box>
-                            <FilterBar />
-                        </Box>
-                    </Box>
-                    <Box>
-                        <Box sx={{ display: "flex", gap: 3, justifyContent: "flex-start" }}>
-                            <Typography variant='h6' sx={{ fontWeight: "bold", ml: 20, mb: 3, mt: 3, textDecoration: 'underline' }}>
-                                Featured
-                            </Typography>
-                        </Box>
-                        <Box sx={{ display: "flex", justifyContent: "center", gap: 5, flexWrap: "wrap" }}>
-                            <BookletCard />
-                            <BookletCard />
-                            <BookletCard />
-                            <TopicTwo />
-                        </Box>
-                    </Box>
-                    <Box>
-                        <Box sx={{ display: "flex", gap: 3, justifyContent: "flex-start" }}>
-                            <Typography variant='h6' sx={{ fontWeight: "bold", ml: 20, mb: 3, mt: 3, textDecoration: 'underline' }}>
-                                Popular
-                            </Typography>
-                        </Box>
-                        <Box sx={{ display: "flex", justifyContent: "center", gap: 5, flexWrap: "wrap" }}>
-                            <BookletCard />
-                            <BookletCard />
-                            <BookletCard />
-                            <TopicTwo />
-                        </Box>
-                    </Box>
-                    <Box>
-                        <Box sx={{ display: "flex", gap: 3, justifyContent: "flex-start" }}>
-                            <Typography variant='h6' sx={{ fontWeight: "bold", ml: 20, mb: 3, mt: 3, textDecoration: 'underline' }}>
-                                Rescent
-                            </Typography>
-                        </Box>
-                        <Box sx={{ display: "flex", justifyContent: "center", gap: 5, flexWrap: "wrap" }}>
-                            <BookletCard />
-                            <BookletCard />
-                            <BookletCard />
-                            <TopicTwo />
-                        </Box>
-                    </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <Button variant="outlined"
-                            onClick={handleclickbookletcardspage}
-                            sx={{ border: "1px solid black", color: "white", backgroundColor: "#81311A", p: 1, mt: 5, mb: 2, borderRadius: 3, width: "100px", fontWeight:"bold" }}>Load More</Button>
-                    </Box>
+                <Box display="flex" flexDirection="column" gap={10} mt={matches ? 5 : 0}>
+                    <TopicTwo />
+                    <RESVisitedArticle />
                 </Box>
             </Box>
-        </div>
-    )
-}
+           
+        </Box>
+    );
+};
 
-export default BookletHomePage
+const Section = ({ title }: { title: string }) => (
+    <Box>
+        <Typography variant="h6" sx={{ fontWeight: "bold", justifyContent:'flex-start' ,mr:5}}>
+            {title}
+        </Typography>
+        <Box display="flex" justifyContent="center" gap={5} flexWrap="wrap" m={2}>
+            <BookCard />
+            <BookCard />
+            <BookCard />
+        </Box>
+    </Box>
+);
+
+
+export default BookHomePage;

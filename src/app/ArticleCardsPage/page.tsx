@@ -1,53 +1,57 @@
-import { Box, Button, Typography } from '@mui/material'
+"use client"
 import React from 'react'
-import FilterBar from '../components/FilterBar'
-import RESVisited from '../components/RESVisited'
-import RelatedBookText from '../components/RelatedBookText'
+import ImageSlider from '../components/ImageSlider'
 import CardData from '../components/card'
+import { Box, Button, Typography, useMediaQuery } from '@mui/material'
+import FilterBar from '../components/FilterBar'
+import TopicOne from '../components/TopicOne'
+import { useRouter } from 'next/navigation'
 import TopicTwo from '../components/TopicTwo'
+import RESVisitedArticle from '../components/RESVisitedArticle'
 
-const ArticleCardsPage = () => {
+const ArticlePage = () => {
+
+    const router = useRouter();
+
+    const matches = useMediaQuery("(min-width:600px)");
+
+    
+
     return (
-        <div>
-            <Box sx={{ backgroundColor: "#FEFCEA" }}>
-                <Box>
-                    <Typography variant='h6' p={2} sx={{ fontSize: "small" }}>
-                        <b> Home /</b> Articles
-                    </Typography>
-                    <Box>
-                        <FilterBar />
-                    </Box>
-                    <Box>
-                        <Box sx={{ display: "flex", justifyContent: "center", gap: 5, flexWrap: "wrap" }}>
-                            <CardData />
-                            <CardData />
-                            <CardData />
-                            <TopicTwo />
-                        </Box>
-                    </Box>
-                    <Box>
-                        <Box sx={{ display: "flex", justifyContent: "center", gap: 5, flexWrap: "wrap" }}>
-                            <CardData />
-                            <CardData />
-                            <CardData />
-                            <RESVisited />
-                        </Box>
-                    </Box>
-                    <Box>
-                        <Box sx={{ display: "flex", justifyContent: "center", gap: 5, flexWrap: "wrap" }}>
-                            <CardData />
-                            <CardData />
-                            <CardData />
-                            <RelatedBookText />
-                        </Box>
-                    </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <Button variant="outlined" sx={{ border: "1px solid black", color: "white", backgroundColor: "#81311A", p: 1, mb: 2, borderRadius: 3, width: "100px", fontWeight: "bold" }}>Load More</Button>
-                    </Box>
+        <Box sx={{ backgroundColor: "#FEFCEA" }}>
+            <Typography variant='h6' p={2} fontSize="small">
+                <b> Home /</b> Articles
+            </Typography>
+          
+            <FilterBar />
+            <Box display="flex" justifyContent="center" gap={5} flexWrap="wrap" >
+                <Box display="flex" flexDirection="column">
+                    <Section title="Featured" />
+                    <Section title="Popular" />
+                    <Section title="Recent" />
+                </Box>
+                <Box display="flex" flexDirection="column" gap={10} mt={matches ? 5 : 0}>
+                    <TopicTwo />
+                    <RESVisitedArticle />
                 </Box>
             </Box>
-        </div>
-    )
-}
+           
+        </Box>
+    );
+};
 
-export default ArticleCardsPage
+const Section = ({ title }: { title: string }) => (
+    <Box>
+        <Typography variant="h6" sx={{ fontWeight: "bold", justifyContent:'flex-start' ,mr:5}}>
+            {title}
+        </Typography>
+        <Box display="flex" justifyContent="center" gap={5} flexWrap="wrap" m={2}>
+            <CardData />
+            <CardData />
+            <CardData />
+        </Box>
+    </Box>
+);
+
+
+export default ArticlePage;
